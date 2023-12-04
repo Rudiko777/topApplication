@@ -1,8 +1,16 @@
-import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
-import './globals.css'
+import type { Metadata } from 'next';
+import {Noto_Sans_KR } from 'next/font/google';
+import './globals.css';
+import {JSX} from "react";
+import {NextFont, NextFontWithVariable} from "next/dist/compiled/@next/font";
 
-const inter = Inter({ subsets: ['latin'] })
+const noto: NextFont = Noto_Sans_KR(
+    {
+      subsets: ['latin'],
+      weight: ['300', '400', '500', '600', '700'],
+      display: "swap",
+    }
+)
 
 export const metadata: Metadata = {
   title: 'Create Next App',
@@ -13,10 +21,10 @@ export default function RootLayout({
   children,
 }: {
   children: React.ReactNode
-}) {
+}): JSX.Element {
   return (
-    <html lang="en">
-      <body className={inter.className}>{children}</body>
+    <html lang="ru">
+      <body className={noto.className}>{children}</body>
     </html>
   )
 }

@@ -1,95 +1,39 @@
-import Image from 'next/image'
-import styles from './page.module.css'
+'use client'
+import Image from 'next/image';
+import {JSX, useState} from "react";
+import {Metadata} from "next";
+import Htag from "@/components/Htag/Htag";
+import Button from "@/components/Button/Button";
+import P from '@/components/P/P'
+import Logo from '../public/vercel.svg'
+import Tag from "@/components/Tag/Tag";
+import Rating from "@/components/Rating/Rating";
 
-export default function Home() {
+// export async function generateMetadata(): Promise<Metadata> {
+//   //...operation with backend
+//   return {
+//     title: "ComputedTitle"
+//   }
+// }
+
+export default function Home(): JSX.Element {
+    const [rating, setRating] = useState<number>(4);
+
   return (
-    <main className={styles.main}>
-      <div className={styles.description}>
-        <p>
-          Get started by editing&nbsp;
-          <code className={styles.code}>app/page.tsx</code>
-        </p>
-        <div>
-          <a
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{' '}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className={styles.vercelLogo}
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
-        </div>
-      </div>
-
-      <div className={styles.center}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
-
-      <div className={styles.grid}>
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Docs <span>-&gt;</span>
-          </h2>
-          <p>Find in-depth information about Next.js features and API.</p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Learn <span>-&gt;</span>
-          </h2>
-          <p>Learn about Next.js in an interactive course with&nbsp;quizzes!</p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Templates <span>-&gt;</span>
-          </h2>
-          <p>Explore the Next.js 13 playground.</p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Deploy <span>-&gt;</span>
-          </h2>
-          <p>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
-    </main>
-  )
+    <div>
+      <Htag tag="h1">
+        Текст
+      </Htag>
+      <Button appearance={'primary'} arrow={"down"}>Узнать подробнее</Button>
+      <Button appearance={'ghost'} arrow={'down'}>Кнопка</Button>
+      <P size={'l'}>Большой</P>
+      <P size={'m'}>Средний</P>
+      <P size={'s'}>Маленький</P>
+      <Tag size={'s'}>Ghost</Tag>
+      <Tag size={'m'} color={'red'} href={'cats'}>Red</Tag>
+      <Tag size={'s'} color={'green'}>Green</Tag>
+      <Tag size={'m'} color={'primary'}>primary</Tag>
+      <Rating rating={rating} isEditable={true} setRating={setRating}/>
+    </div>
+  );
 }
